@@ -27,7 +27,7 @@ h1 {
 }
 
 .content {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -44,7 +44,7 @@ h1 {
 }
 
 nav {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   text-align: right;
