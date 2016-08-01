@@ -24,8 +24,8 @@
   }
 
   function calculateRGB(clientX, clientY) {
-    var r = Math.min(Math.round(clientX / window.innerWidth * 255), 255);
-    var g = Math.min(Math.round(clientY / window.innerHeight * 255), 255);
+    var r = Math.max(0, Math.min(Math.round(clientX / window.innerWidth * 255), 255));
+    var g = Math.max(0, Math.min(Math.round(clientY / window.innerHeight * 255), 255));
     var b = Math.round((r + g) / 2);
     return [r, g, b];
   }
