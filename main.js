@@ -5,6 +5,24 @@
   var preventMouseover = false;
   var isTouchDevice = typeof window.ontouchstart !== 'undefined';
 
+  function getInitialRGB() {
+    var rgb = location.hash.replace(/^#/, '').split(',').map(function (str) {
+      return parseInt(str, 10);
+    });
+
+    var isValid = rgb && rgb.length === 3;
+
+    if (isValid) {
+      rgb.forEach(function (val) {
+        if (val < 0 || val > 255) {
+          isValid = false;
+        }
+      });
+    }
+
+    return isValid && rgb;
+  }
+
   function calculateRGB(clientX, clientY) {
     var r = Math.min(Math.round(clientX / window.innerWidth * 255), 255);
     var g = Math.min(Math.round(clientY / window.innerHeight * 255), 255);
@@ -22,43 +40,11 @@
 
   function onClick(e) {
     if (e.target.tagName.toLowerCase() !== 'a') {
-      location.hash = preventMouseover ? '' : calculateRGB(e.clientX, e.clientY).join(',');
+      var rgb = calculateRGB(e.clientX, e.clientY);
+      location.hash = preventMouseover ? '' : rgb.join(',');
+      preventMouseover = !preventMouseover;
+      updateColor(rgb);
     }
-  }
-
-  function onHashChange(e) {
-    var hash = location.hash.replace(/^#/, '');
-
-    if (!hash) {
-      preventMouseover = false;
-      updateColor([0, 0, 0]);
-      return;
-    }
-
-    var hashParts = hash.replace(/^#/, '').split(',');
-
-    if (hashParts.length === 3) {
-      var rgb = hashParts.map(function (str) {
-        return parseInt(str, 10);
-      });
-
-      var isValidRGB = true;
-
-      rgb.forEach(function (val) {
-        if (val < 0 || val > 255) {
-          isValidRGB = false;
-        }
-      });
-
-      if (isValidRGB) {
-        preventMouseover = true;
-        updateColor(rgb);
-        return;
-      }
-    }
-
-    preventMouseover = false;
-    location.hash = '';
   }
 
   function onMouseOver(e) {
@@ -69,7 +55,10 @@
 
   function onTouchEnd(e) {
     if (e.target.tagName.toLowerCase() !== 'a') {
-      location.hash = calculateRGB(e.changedTouches[0].clientX, e.changedTouches[0].clientY).join(',');
+      var rgb = calculateRGB(e.changedTouches[0].clientX, e.changedTouches[0].clientY);
+      location.hash = rgb.join(',');
+      preventMouseover = !preventMouseover;
+      updateColor(rgb);
     }
   }
 
@@ -80,6 +69,10 @@
     window.addEventListener('mousemove', onMouseOver);
   }
 
-  window.addEventListener('hashchange', onHashChange);
-  onHashChange();
+  var initialRGB = getInitialRGB();
+
+  if (initialRGB) {
+    preventMouseover = true;
+    updateColor(initialRGB);
+  }
 }(window));
