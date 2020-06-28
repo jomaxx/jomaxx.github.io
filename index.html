@@ -1,27 +1,117 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Jo Maxx - js dev @ spotify">
-  <meta name="author" content="Jo Maxx Blake">
-  <title>Jo Maxx</title>
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css" rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-  <link href="main.css" rel='stylesheet' type='text/css'>
-</head>
-<body>
-  <nav role="navigation">
-    <a href="mailto:jo.maxx.blake@gmail.com" role="link" title="Email">email</a><a href="https://github.com/jomaxx" role="link" title="Github">github</a><a href="https://twitter.com/jo_maxx" role="link" title="Twitter">twitter</a>
-  </nav>
-  <div class="content">
-    <div>
-      <h1>jo maxx</h1>
-      <p>js dev @ <a href="https://open.spotify.com/user/spotify/playlist/37i9dQZEVXcJh7cp6SQFyx" role="link" title="Listen to my Discover Weekly">spotify</a></p>
-    </div>
-  </div>
-  <script src="main.js"></script>
-</body>
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-171113967-1"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-171113967-1");
+    </script>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="jo maxx - staff engineer @ spotify" />
+    <meta name="author" content="Jo Maxx Blake" />
+    <title>jo maxx</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        font-size: 16px;
+      }
+
+      body {
+        font-family: "Open Sans", sans-serif;
+        font-size: 1em;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      a:hover {
+        border-bottom: 1px solid;
+      }
+
+      h1 {
+        font-size: 5em;
+        margin: 0;
+      }
+
+      main {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: table;
+        z-index: 1;
+        padding: 20px;
+      }
+
+      main > div {
+        display: table-cell;
+        text-align: center;
+        vertical-align: middle;
+      }
+
+      nav {
+        position: absolute;
+        top: 0;
+        left: 0;
+        text-align: right;
+        width: 100%;
+        padding: 20px;
+        font-size: 0.75em;
+        z-index: 2;
+      }
+
+      nav a + a {
+        margin-left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="mailto:jo.maxx.blake@gmail.com" role="link" title="Email"
+          >email</a
+        ><a href="https://github.com/jomaxx" role="link" title="Github"
+          >github</a
+        ><a href="https://twitter.com/jo_maxx" role="link" title="Twitter"
+          >twitter</a
+        >
+      </nav>
+    </header>
+    <main>
+      <div>
+        <h1>jo maxx</h1>
+        <p>staff engineer @ spotify</p>
+      </div>
+    </main>
+  </body>
 </html>
